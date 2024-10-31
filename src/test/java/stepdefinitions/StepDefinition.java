@@ -6,13 +6,15 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
+import oussema.pojoclasses.LoginPOJO.LoginCredentials;
+import oussema.pojoclasses.LoginPOJO.LoginResponse;
 import oussema.pojoclasses.RecipePOJO.AllRecipeResponse;
 import oussema.pojoclasses.RecipePOJO.Recipe;
 import oussema.pojoclasses.cartPOJO.AllCartResponse;
 import oussema.pojoclasses.cartPOJO.CartProducts;
 import oussema.pojoclasses.productPOJO.AllProductResponse;
 import oussema.pojoclasses.userPOJO.AllUserResponse;
-import oussema.pojoclasses.userPOJO.Users;
+import oussema.pojoclasses.userPOJO.User;
 import resources.Utils;
 import java.io.FileNotFoundException;
 
@@ -24,6 +26,9 @@ public class StepDefinition extends Utils {
     RequestSpecification theBaseRequest;
     Response response;
     RequestSpecification request;
+    LoginCredentials loginCredentials;
+    static String username;
+    static String password;
 
     @Given("The BaseURI for DummyJson")
     public void the_base_uri_for_dummy_json() throws FileNotFoundException {
@@ -130,5 +135,27 @@ public class StepDefinition extends Utils {
                 .get("/recipes"+"/"+id).then().extract().response();
     }
 
+    @When("User calls UserLoginAPI with POST http request")
+    public void user_calls_user_login_api_with_post_http_request() {
+        response = theBaseRequest.body(loginCredentials).when()
+                .post("/auth/login").then().extract().response();
+        LoginResponse loginResponse = response.as(LoginResponse.class);
+        System.out.println(loginResponse.getFirstName());
+    }
 
+    @Given("Access Token Expire Time in minutes {int}")
+    public void access_token_expire_time_in_minutes(int expireTime) {
+        loginCredentials = new LoginCredentials();
+        loginCredentials.setExpiresInMins(expireTime);
+        loginCredentials.setUsername(username);
+        loginCredentials.setPassword(password);
+    }
+
+    @Then("Username and password are stored")
+    public void username_and_password_are_stored(){
+        User userToLogin = response.as(User.class);
+        username = userToLogin.getUsername();
+        password = userToLogin.getPassword();
+
+    }
 }
