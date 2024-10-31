@@ -11,7 +11,7 @@ public class Recipe {
     private String name;
     private List<String> ingredients;
     private List<String> instructions;
-    private int prepTimeMinute;
+    private int prepTimeMinutes;
     private int cookTimeMinutes;
     private int servings;
     private String difficulty;
@@ -22,5 +22,5 @@ public class Recipe {
     private String image;
     private double rating;
     private int reviewCount;
-    private List<String> mealtype;
+    private List<String> mealType;
 }

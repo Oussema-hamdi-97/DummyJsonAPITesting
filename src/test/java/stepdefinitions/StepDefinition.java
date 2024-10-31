@@ -6,6 +6,8 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
+import oussema.pojoclasses.RecipePOJO.AllRecipeResponse;
+import oussema.pojoclasses.RecipePOJO.Recipe;
 import oussema.pojoclasses.cartPOJO.AllCartResponse;
 import oussema.pojoclasses.cartPOJO.CartProducts;
 import oussema.pojoclasses.productPOJO.AllProductResponse;
@@ -115,4 +117,18 @@ public class StepDefinition extends Utils {
         response = theBaseRequest.when()
                 .get("/carts"+"/"+id).then().extract().response();
     }
+
+    @When("User calls GetRecipeAPI with GET http request")
+    public void user_calls_get_recipe_api_with_get_http_request() {
+        response = theBaseRequest.when()
+                .get("/recipes").then().extract().response();
+    }
+
+    @When("User calls GetSingleRecipeAPI with GET http request and id {string}")
+    public void user_calls_get_single_recipe_api_with_get_http_request_and_id(String id) {
+        response = theBaseRequest.when()
+                .get("/recipes"+"/"+id).then().extract().response();
+    }
+
+
 }
