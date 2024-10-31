@@ -41,19 +41,25 @@ This project serves as a comprehensive learning tool for mastering API testing f
 
 ### 2. User Data Retrieval
 - **Fetch User List**: Retrieve a list of users.
-- **Fetch Single User**: Retrieve detailed information for a specific user based on their ID.
+- **Fetch Valid Single User**: Retrieve a valid single specific user based on their ID.
+- **Fetch Invalid Single User**: Retrieve a invalid single specific user based on an invalid ID.
 
-### 3. Cart and Order Data Retrieval
-- **Fetch Cart**: Retrieve the current cart for a specific user.
-- **Fetch Order List**: Retrieve a list of orders for a specific user.
-- **Fetch Single Order**: Retrieve detailed information for a specific order.
+### 3. Cart Data Retrieval
+- **Fetch All Carts**: Retrieve all the current carts.
+- **Fetch Valid Single Cart**: Retrieve a valid single cart using the cart id.
+- **Fetch Invalid Single Cart**: Retrieve an invalid single cart using an invalid cart id.
 
-### 4. Error Handling and Validation
+### 4. Recipe Data Retrieval
+- **Fetch All Recipes**: Retrieve all the current recipes.
+- **Fetch Valid Single Recipe**: Retrieve a valid single recipe using the recipe id.
+- **Fetch Invalid Single Recipe**: Retrieve an invalid single recipe using an invalid recipe id.
+
+### 5. Error Handling and Validation
 - **Invalid Request**: Test responses for invalid requests, such as incorrect URLs, missing parameters, or invalid data formats.
 - **Rate Limiting**: Test the API's rate limits and error handling for exceeding those limits.
 - **Server Errors**: Test the API's response to server-side errors, such as database failures or internal server errors.
 
-### 5. Performance Testing
+### 6. Performance Testing
 - **Response Time**: Measure the response time for different API endpoints under various load conditions.
 - **Throughput**: Measure the number of requests the API can handle per second.
 - **Scalability**: Test the API's ability to handle increased load and traffic.
