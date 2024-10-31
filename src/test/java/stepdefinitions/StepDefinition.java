@@ -6,6 +6,8 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
+import oussema.pojoclasses.cartPOJO.AllCartResponse;
+import oussema.pojoclasses.cartPOJO.CartProducts;
 import oussema.pojoclasses.productPOJO.AllProductResponse;
 import oussema.pojoclasses.userPOJO.AllUserResponse;
 import oussema.pojoclasses.userPOJO.Users;
@@ -87,5 +89,30 @@ public class StepDefinition extends Utils {
                 .get("/users"+"/"+id).then().extract().response();
         //Users users = response.as(Users.class);
         //System.out.println(users.getFirstName());
+    }
+
+    @When("User calls GetCartAPI with GET http request")
+    public void user_calls_get_cart_api_with_get_http_request() {
+        response = theBaseRequest.when()
+                .get("/carts").then().extract().response();
+    }
+
+    /*
+    @Then("Details with id {int} are shown in output")
+    public void details_with_id_are_shown_in_output(Integer id) {
+        AllCartResponse allCartResponse = response.as(AllCartResponse.class);
+        int newID = id -1;
+        for(int i=0;i<allCartResponse.getCarts().get(newID).getProducts().size();i++){
+            System.out.println(allCartResponse.getCarts().get(newID).getProducts().get(i).getTitle());
+            System.out.println(allCartResponse.getCarts().get(newID).getProducts().get(i).getPrice());
+            System.out.println(allCartResponse.getCarts().get(newID).getProducts().get(i).getQuantity());
+            System.out.println(allCartResponse.getCarts().get(newID).getProducts().get(i).getTotal());
+        }
+    }*/
+
+    @When("User calls GetSingleCartAPI with GET http request and id {string}")
+    public void user_calls_get_single_cart_api_with_get_http_request_and_id(String id) {
+        response = theBaseRequest.when()
+                .get("/carts"+"/"+id).then().extract().response();
     }
 }
