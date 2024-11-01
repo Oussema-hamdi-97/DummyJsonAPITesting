@@ -1,10 +1,10 @@
-package oussema.pojoclasses.cartPOJO;
+package oussema.pojoclasses.CartPOJO;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CartProducts {
+public class CartProduct {
     private int id;
     private String title;
     private double price;

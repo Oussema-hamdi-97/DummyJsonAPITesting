@@ -8,13 +8,8 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import oussema.pojoclasses.LoginPOJO.LoginCredentials;
 import oussema.pojoclasses.LoginPOJO.LoginResponse;
-import oussema.pojoclasses.RecipePOJO.AllRecipeResponse;
-import oussema.pojoclasses.RecipePOJO.Recipe;
-import oussema.pojoclasses.cartPOJO.AllCartResponse;
-import oussema.pojoclasses.cartPOJO.CartProducts;
-import oussema.pojoclasses.productPOJO.AllProductResponse;
-import oussema.pojoclasses.userPOJO.AllUserResponse;
-import oussema.pojoclasses.userPOJO.User;
+import oussema.pojoclasses.ProductPOJO.AllProductResponse;
+import oussema.pojoclasses.UserPOJO.User;
 import resources.Utils;
 import java.io.FileNotFoundException;
 

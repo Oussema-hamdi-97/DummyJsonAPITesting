@@ -1,4 +1,4 @@
-package oussema.pojoclasses.productPOJO;
+package oussema.pojoclasses.ProductPOJO;
 
 import java.util.List;
 import lombok.Getter;

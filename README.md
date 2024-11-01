@@ -65,6 +65,7 @@ This project serves as a comprehensive learning tool for mastering API testing f
 - **Scalability**: Test the API's ability to handle increased load and traffic.
 
 ## Implemented Test Cases
+
 ### 1. Product Data Retrieval Test Cases
 
 | Test Case ID | Test Case Description     | Test Data                              | Expected Result                                         | Test Steps                                                                                                                                                  |
@@ -83,3 +84,11 @@ This project serves as a comprehensive learning tool for mastering API testing f
 | TC_07        | Fetch User List       | No specific parameters | List of users                      | 1. Send a GET request to `/users` without any parameters. <br> 2. Receive a JSON response with a list of users. |
 | TC_08        | Fetch Single User     | Valid user ID       | Detailed user information           | 1. Send a GET request to `/users/{userId}` with a valid user ID. <br> 2. Receive a JSON response with detailed user information. |
 | TC_09        | Fetch Single User     | Invalid user ID       | Error message indicating user not found         | 1. Send a GET request to /users/{userId} with an invalid user ID. <br> 2. Receive an error response with an appropriate error message. |
+
+### 3. Cart Data Retrieval
+
+| Test Case ID | Test Case Description     | Test Data                              | Expected Result                                         | Test Steps                                                                                                                                                  |
+|--------------|---------------------------|----------------------------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TC_10        | Fetch All Carts			| No required Data | All carts appears in response   | 1. Send a GET request to /carts. <br> 2. Receive a JSON response with all carts items. |
+| TC_11        | Fetch Single Cart with ID     | Valid Cart ID                      | Single cart details appears in response                            | 1. Send a GET request to /carts/{cartID} with an valid cart ID. <br> 2.  Receive a JSON response with single Cart details                   |
+| TC_12        | Fetch Invalid Single Cart with ID        | Invalid Cart ID           | Error message and status code 404 						               | 1. Send a GET request to /carts/{cartID} with an invalid cart ID. <br> 2.  Receive an error message.               |

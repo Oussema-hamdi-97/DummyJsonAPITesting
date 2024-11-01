@@ -12,6 +12,7 @@ Feature: Invalid Product Data Retrieval
       |5000 |
 
   @invalidTestProduct
+
   Scenario Outline: Search Invalid Products
     Given The BaseURI for DummyJson
     When User calls SearchProductAPI with GET http request and search for "<Product>"
