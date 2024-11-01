@@ -2,7 +2,7 @@
 
 ## Description
 This project focuses on creating a structured framework for testing the **DummyJSON API**. The DummyJSON API provides a range of sample endpoints with JSON data, making it ideal for practicing and demonstrating API testing techniques. The goal of this project is to manually test these endpoints using **Postman**, followed by implementing automated tests using **Java** with **RestAssured**.
-
+API Docs: https://dummyjson.com/docs
 ## Project Objectives
 
 1. **Manual Testing with Postman**:
@@ -85,10 +85,18 @@ This project serves as a comprehensive learning tool for mastering API testing f
 | TC_08        | Fetch Single User     | Valid user ID       | Detailed user information           | 1. Send a GET request to `/users/{userId}` with a valid user ID. <br> 2. Receive a JSON response with detailed user information. |
 | TC_09        | Fetch Single User     | Invalid user ID       | Error message indicating user not found         | 1. Send a GET request to /users/{userId} with an invalid user ID. <br> 2. Receive an error response with an appropriate error message. |
 
-### 3. Cart Data Retrieval
+### 3. Cart Data Retrieval Test Cases
 
 | Test Case ID | Test Case Description     | Test Data                              | Expected Result                                         | Test Steps                                                                                                                                                  |
 |--------------|---------------------------|----------------------------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| TC_10        | Fetch All Carts			| No required Data | All carts appears in response   | 1. Send a GET request to /carts. <br> 2. Receive a JSON response with all carts items. |
+| TC_10        | Fetch All Carts			| No specific parameters | All carts appears in response   | 1. Send a GET request to /carts. <br> 2. Receive a JSON response with all carts items. |
 | TC_11        | Fetch Single Cart with ID     | Valid Cart ID                      | Single cart details appears in response                            | 1. Send a GET request to /carts/{cartID} with an valid cart ID. <br> 2.  Receive a JSON response with single Cart details                   |
 | TC_12        | Fetch Invalid Single Cart with ID        | Invalid Cart ID           | Error message and status code 404 						               | 1. Send a GET request to /carts/{cartID} with an invalid cart ID. <br> 2.  Receive an error message.               |
+
+### 4. User Data Retrieval Test Cases
+
+| Test Case ID | Test Case Description | Test Data           | Expected Result                     | Test Steps                                                                                   |
+|--------------|-----------------------|---------------------|-------------------------------------|----------------------------------------------------------------------------------------------|
+| TC_13        | Fetch All Recipes       | No specific parameters | All Recipes appears in response                      | 1. Send a GET request to /recipes. <br> 2. Receive a JSON response with all carts items. |
+| TC_14        | Fetch Single Recipe with ID     | Valid Recipe ID       | Single cart details appears in response           | 1. Send a GET request to /recipes/{recipeID} with an valid cart ID. <br> 2.  Receive a JSON response with single Cart details |
+| TC_15        | Fetch Invalid Single Recipe with ID     | Invalid Recipe ID       | Error message and status code 404          | 1. Send a GET request to /recipes/{recipeID} with an invalid cart ID. <br> 2.  Receive an error message. |

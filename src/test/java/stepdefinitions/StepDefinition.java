@@ -99,19 +99,6 @@ public class StepDefinition extends Utils {
                 .get("/carts").then().extract().response();
     }
 
-    /*
-    @Then("Details with id {int} are shown in output")
-    public void details_with_id_are_shown_in_output(Integer id) {
-        AllCartResponse allCartResponse = response.as(AllCartResponse.class);
-        int newID = id -1;
-        for(int i=0;i<allCartResponse.getCarts().get(newID).getProducts().size();i++){
-            System.out.println(allCartResponse.getCarts().get(newID).getProducts().get(i).getTitle());
-            System.out.println(allCartResponse.getCarts().get(newID).getProducts().get(i).getPrice());
-            System.out.println(allCartResponse.getCarts().get(newID).getProducts().get(i).getQuantity());
-            System.out.println(allCartResponse.getCarts().get(newID).getProducts().get(i).getTotal());
-        }
-    }*/
-
     @When("User calls GetSingleCartAPI with GET http request and id {string}")
     public void user_calls_get_single_cart_api_with_get_http_request_and_id(String id) {
         response = theBaseRequest.when()
@@ -132,18 +119,16 @@ public class StepDefinition extends Utils {
 
     @When("User calls UserLoginAPI with POST http request")
     public void user_calls_user_login_api_with_post_http_request() {
+        loginCredentials.setUsername(username);
+        loginCredentials.setPassword(password);
         response = theBaseRequest.body(loginCredentials).when()
                 .post("/auth/login").then().extract().response();
-        LoginResponse loginResponse = response.as(LoginResponse.class);
-        System.out.println(loginResponse.getFirstName());
     }
 
     @Given("Access Token Expire Time in minutes {int}")
     public void access_token_expire_time_in_minutes(int expireTime) {
         loginCredentials = new LoginCredentials();
         loginCredentials.setExpiresInMins(expireTime);
-        loginCredentials.setUsername(username);
-        loginCredentials.setPassword(password);
     }
 
     @Then("Username and password are stored")
@@ -151,6 +136,21 @@ public class StepDefinition extends Utils {
         User userToLogin = response.as(User.class);
         username = userToLogin.getUsername();
         password = userToLogin.getPassword();
+    }
 
+    @When("User calls UserLoginAPI with POST http request with invalid Username {string} and Password {string}")
+    public void user_calls_user_login_api_with_post_http_request_with_invalid_username_and_password(String username,String password) {
+        loginCredentials.setUsername(username);
+        loginCredentials.setPassword(password);
+        response = theBaseRequest.body(loginCredentials).when()
+                .post("/auth/login").then().extract().response();
+    }
+
+    @Then("message in response is {string}")
+    public void message_in_response_is_Product_with_id_not_found(String message){
+        JsonPath js = new JsonPath(response.asString());
+        String actualResult = js.get("message");
+        String expectedResult = message;
+        Assert.assertTrue(actualResult.equalsIgnoreCase(expectedResult));
     }
 }
