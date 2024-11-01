@@ -54,15 +54,11 @@ This project serves as a comprehensive learning tool for mastering API testing f
 - **Fetch Valid Single Recipe**: Retrieve a valid single recipe using the recipe id.
 - **Fetch Invalid Single Recipe**: Retrieve an invalid single recipe using an invalid recipe id.
 
-### 5. Error Handling and Validation
-- **Invalid Request**: Test responses for invalid requests, such as incorrect URLs, missing parameters, or invalid data formats.
-- **Rate Limiting**: Test the API's rate limits and error handling for exceeding those limits.
-- **Server Errors**: Test the API's response to server-side errors, such as database failures or internal server errors.
+### 5. User Login
+- **Fetch Single User**: Retrieve a single user's username and password.
+- **Valid User Login**: Login is valid and access token is stored.
+- **Invalid User Login**: Login is invalid and error 
 
-### 6. Performance Testing
-- **Response Time**: Measure the response time for different API endpoints under various load conditions.
-- **Throughput**: Measure the number of requests the API can handle per second.
-- **Scalability**: Test the API's ability to handle increased load and traffic.
 
 ## Implemented Test Cases
 
@@ -100,3 +96,11 @@ This project serves as a comprehensive learning tool for mastering API testing f
 | TC_13        | Fetch All Recipes       | No specific parameters | All Recipes appears in response                      | 1. Send a GET request to /recipes. <br> 2. Receive a JSON response with all carts items. |
 | TC_14        | Fetch Single Recipe with ID     | Valid Recipe ID       | Single cart details appears in response           | 1. Send a GET request to /recipes/{recipeID} with an valid cart ID. <br> 2.  Receive a JSON response with single Cart details |
 | TC_15        | Fetch Invalid Single Recipe with ID     | Invalid Recipe ID       | Error message and status code 404          | 1. Send a GET request to /recipes/{recipeID} with an invalid cart ID. <br> 2.  Receive an error message. |
+
+### 4. User Login Test Cases
+
+| Test Case ID | Test Case Description | Test Data           | Expected Result                     | Test Steps                                                                                   |
+|--------------|-----------------------|---------------------|-------------------------------------|----------------------------------------------------------------------------------------------|
+| TC_16        | Fetch Username and Password of a Valid User     | Valid User ID | Username and password stored                      | 1. Send a GET request to /users/{userID}. <br> 2. Receive a JSON response with all carts items. 3. Store Username and password |
+| TC_17        | Valid User Login     | Require "Fetch Username and Password of a Valid User"       | Login successfull and store Access_token        | 1. Send a POST request to /auth/login with an valid username and password. <br> 2.  Receive a JSON response with single Cart details 3. Store access_token|
+| TC_18        | Invalid User Login     | Invalid username and password       | Error message and status code 404          | 1. SSend a POST request to /auth/login with an invalid username and password. <br> 2.  Receive an error message. |
