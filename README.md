@@ -97,7 +97,7 @@ This project serves as a comprehensive learning tool for mastering API testing f
 | TC_14        | Fetch Single Recipe with ID     | Valid Recipe ID       | Single cart details appears in response           | 1. Send a GET request to /recipes/{recipeID} with an valid cart ID. <br> 2.  Receive a JSON response with single Cart details |
 | TC_15        | Fetch Invalid Single Recipe with ID     | Invalid Recipe ID       | Error message and status code 404          | 1. Send a GET request to /recipes/{recipeID} with an invalid cart ID. <br> 2.  Receive an error message. |
 
-### 4. User Login Test Cases
+### 5. User Login Test Cases
 
 | Test Case ID | Test Case Description | Test Data           | Expected Result                     | Test Steps                                                                                   |
 |--------------|-----------------------|---------------------|-------------------------------------|----------------------------------------------------------------------------------------------|
