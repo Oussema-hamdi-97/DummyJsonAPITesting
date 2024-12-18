@@ -32,5 +32,4 @@ public class Utils {
     public void reportLogging(String s){
         ExtentCucumberAdapter.getCurrentStep().log(Status.INFO,s);
     }
-
 }
