@@ -2,7 +2,7 @@
 
 ## Description
 This project focuses on creating a structured framework for testing the **DummyJSON API**. The DummyJSON API provides a range of sample endpoints with JSON data, making it ideal for practicing and demonstrating API testing techniques. The goal of this project is to manually test these endpoints using **Postman**, followed by implementing automated tests using **Java** with **RestAssured**.
-
+API Docs: https://dummyjson.com/docs
 ## Project Objectives
 
 1. **Manual Testing with Postman**:
@@ -41,24 +41,27 @@ This project serves as a comprehensive learning tool for mastering API testing f
 
 ### 2. User Data Retrieval
 - **Fetch User List**: Retrieve a list of users.
-- **Fetch Single User**: Retrieve detailed information for a specific user based on their ID.
+- **Fetch Valid Single User**: Retrieve a valid single specific user based on their ID.
+- **Fetch Invalid Single User**: Retrieve a invalid single specific user based on an invalid ID.
 
-### 3. Cart and Order Data Retrieval
-- **Fetch Cart**: Retrieve the current cart for a specific user.
-- **Fetch Order List**: Retrieve a list of orders for a specific user.
-- **Fetch Single Order**: Retrieve detailed information for a specific order.
+### 3. Cart Data Retrieval
+- **Fetch All Carts**: Retrieve all the current carts.
+- **Fetch Valid Single Cart**: Retrieve a valid single cart using the cart id.
+- **Fetch Invalid Single Cart**: Retrieve an invalid single cart using an invalid cart id.
 
-### 4. Error Handling and Validation
-- **Invalid Request**: Test responses for invalid requests, such as incorrect URLs, missing parameters, or invalid data formats.
-- **Rate Limiting**: Test the API's rate limits and error handling for exceeding those limits.
-- **Server Errors**: Test the API's response to server-side errors, such as database failures or internal server errors.
+### 4. Recipe Data Retrieval
+- **Fetch All Recipes**: Retrieve all the current recipes.
+- **Fetch Valid Single Recipe**: Retrieve a valid single recipe using the recipe id.
+- **Fetch Invalid Single Recipe**: Retrieve an invalid single recipe using an invalid recipe id.
 
-### 5. Performance Testing
-- **Response Time**: Measure the response time for different API endpoints under various load conditions.
-- **Throughput**: Measure the number of requests the API can handle per second.
-- **Scalability**: Test the API's ability to handle increased load and traffic.
+### 5. User Login
+- **Fetch Single User**: Retrieve a single user's username and password.
+- **Valid User Login**: Login is valid and access token is stored.
+- **Invalid User Login**: Login is invalid and error 
+
 
 ## Implemented Test Cases
+
 ### 1. Product Data Retrieval Test Cases
 
 | Test Case ID | Test Case Description     | Test Data                              | Expected Result                                         | Test Steps                                                                                                                                                  |
@@ -77,3 +80,27 @@ This project serves as a comprehensive learning tool for mastering API testing f
 | TC_07        | Fetch User List       | No specific parameters | List of users                      | 1. Send a GET request to `/users` without any parameters. <br> 2. Receive a JSON response with a list of users. |
 | TC_08        | Fetch Single User     | Valid user ID       | Detailed user information           | 1. Send a GET request to `/users/{userId}` with a valid user ID. <br> 2. Receive a JSON response with detailed user information. |
 | TC_09        | Fetch Single User     | Invalid user ID       | Error message indicating user not found         | 1. Send a GET request to /users/{userId} with an invalid user ID. <br> 2. Receive an error response with an appropriate error message. |
+
+### 3. Cart Data Retrieval Test Cases
+
+| Test Case ID | Test Case Description     | Test Data                              | Expected Result                                         | Test Steps                                                                                                                                                  |
+|--------------|---------------------------|----------------------------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TC_10        | Fetch All Carts			| No specific parameters | All carts appears in response   | 1. Send a GET request to /carts. <br> 2. Receive a JSON response with all carts items. |
+| TC_11        | Fetch Single Cart with ID     | Valid Cart ID                      | Single cart details appears in response                            | 1. Send a GET request to /carts/{cartID} with an valid cart ID. <br> 2.  Receive a JSON response with single Cart details                   |
+| TC_12        | Fetch Invalid Single Cart with ID        | Invalid Cart ID           | Error message and status code 404 						               | 1. Send a GET request to /carts/{cartID} with an invalid cart ID. <br> 2.  Receive an error message.               |
+
+### 4. User Data Retrieval Test Cases
+
+| Test Case ID | Test Case Description | Test Data           | Expected Result                     | Test Steps                                                                                   |
+|--------------|-----------------------|---------------------|-------------------------------------|----------------------------------------------------------------------------------------------|
+| TC_13        | Fetch All Recipes       | No specific parameters | All Recipes appears in response                      | 1. Send a GET request to /recipes. <br> 2. Receive a JSON response with all carts items. |
+| TC_14        | Fetch Single Recipe with ID     | Valid Recipe ID       | Single cart details appears in response           | 1. Send a GET request to /recipes/{recipeID} with an valid cart ID. <br> 2.  Receive a JSON response with single Cart details |
+| TC_15        | Fetch Invalid Single Recipe with ID     | Invalid Recipe ID       | Error message and status code 404          | 1. Send a GET request to /recipes/{recipeID} with an invalid cart ID. <br> 2.  Receive an error message. |
+
+### 5. User Login Test Cases
+
+| Test Case ID | Test Case Description | Test Data           | Expected Result                     | Test Steps                                                                                   |
+|--------------|-----------------------|---------------------|-------------------------------------|----------------------------------------------------------------------------------------------|
+| TC_16        | Fetch Username and Password of a Valid User     | Valid User ID | Username and password stored                      | 1. Send a GET request to /users/{userID}. <br> 2. Receive a JSON response with all carts items. 3. Store Username and password |
+| TC_17        | Valid User Login     | Require "Fetch Username and Password of a Valid User"       | Login successfull and store Access_token        | 1. Send a POST request to /auth/login with an valid username and password. <br> 2.  Receive a JSON response with single Cart details 3. Store access_token|
+| TC_18        | Invalid User Login     | Invalid username and password       | Error message and status code 404          | 1. SSend a POST request to /auth/login with an invalid username and password. <br> 2.  Receive an error message. |
